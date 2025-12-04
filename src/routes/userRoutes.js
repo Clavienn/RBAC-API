@@ -16,15 +16,13 @@ const router = express.Router();
 
 
 
-// AUTH
 router.post("/register", register);
 router.post("/login", login);
 
 
-// USERS ADMIN Zone
 router.get("/", authMiddleware, requireRole("admin"), getAllUsers);
-router.get("/:id", authMiddleware, requireRole("admin"), getUserById);
-router.put("/:id", authMiddleware, requireRole("admin"), updateUser);
+router.get("/:id", authMiddleware, getUserById);
+router.put("/:id", authMiddleware, updateUser);
 router.delete("/:id", authMiddleware, requireRole("admin"), deleteUser);
 
 export default router;
