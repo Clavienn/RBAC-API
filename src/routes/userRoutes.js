@@ -20,9 +20,13 @@ router.post("/register", register);
 router.post("/login", login);
 
 
-router.get("/", authMiddleware, requireRole("admin"), getAllUsers);
+router.get("/", authMiddleware, 
+  // requireRole("admin"), 
+  getAllUsers);
 router.get("/:id", authMiddleware, getUserById);
 router.put("/:id", authMiddleware, updateUser);
-router.delete("/:id", authMiddleware, requireRole("admin"), deleteUser);
+router.delete("/:id", authMiddleware, 
+  // requireRole("admin"), 
+  deleteUser);
 
 export default router;
